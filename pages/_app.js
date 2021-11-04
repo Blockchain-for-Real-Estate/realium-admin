@@ -9,10 +9,8 @@ import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import DefaultLayout from "layout/DefaultLayout";
-import AccountLayout from "layout/AccountLayout";
 import Toasts from "components/base/Toasts";
 import useUser from "context/queries/useUser";
-import NotAuthorized from "pages/NotAuthorized";
 import Modal from "components/base/Modal";
 import AuthPage from "pages/auth/AuthPage";
 
@@ -46,7 +44,7 @@ function Realium({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <AppProvider>
-            <Auth>{getLayout(Component, pageProps)}</Auth>
+            <Auth Component={Component} pageProps={pageProps} />
             <Toasts />
             <Modal />
           </AppProvider>
@@ -57,14 +55,15 @@ function Realium({ Component, pageProps }) {
   );
 }
 
+const Auth = ({ Component, pageProps }) => {
+  const { data: user, isLoading } = useUser();
+  if (isLoading) return null;
+  if (!user) return <AuthPage />;
+  if (user) return getLayout(Component, pageProps);
+};
+
 const getLayout = (Component, pageProps) => {
   switch (Component.layout) {
-    case "account":
-      return (
-        <AccountLayout>
-          <Component {...pageProps} />
-        </AccountLayout>
-      );
     case "default":
       return (
         <DefaultLayout>
@@ -74,13 +73,6 @@ const getLayout = (Component, pageProps) => {
     default:
       return <Component {...pageProps} />;
   }
-};
-
-const Auth = ({ children }) => {
-  const { data: user, isLoading } = useUser();
-  if (isLoading) return null;
-  if (!user) return <AuthPage />;
-  if (user) return getLayout(children);
 };
 
 export default Realium;

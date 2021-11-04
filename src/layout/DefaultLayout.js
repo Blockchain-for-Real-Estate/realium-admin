@@ -1,14 +1,28 @@
-import DefaultHeader from "./headers/DefaultHeader";
+import { useState } from "react";
+import { HomeIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import MobileSidebar from "./sidebar/MobileSidebar";
+import DesktopSidebar from "./sidebar/DesktopSidebar";
+import MobileHeader from "./header/MobileHeader";
 
-const DefaultLayout = ({ children }) => {
+const navigation = [{ name: "Properties", href: "/", icon: HomeIcon }];
+
+export default function Example({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <div className="h-full flex flex-col">
+    <>
       <div>
-        <DefaultHeader />
+        <MobileSidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          navigation={navigation}
+        />
+        <DesktopSidebar navigation={navigation} />
+        <div className="md:pl-64 flex flex-col flex-1">
+          <MobileHeader setSidebarOpen={setSidebarOpen} />
+          <main className="flex-1">{children}</main>
+        </div>
       </div>
-      <div className="flex-1">{children}</div>
-    </div>
+    </>
   );
-};
-
-export default DefaultLayout;
+}

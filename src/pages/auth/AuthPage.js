@@ -1,6 +1,4 @@
-import Image from "next/image";
 import { useState, useEffect } from "react";
-
 import AuthSigninSection from "./sections/AuthSigninSection";
 import AuthCompletePasswordSection from "./sections/AuthCompletePasswordSection";
 import AuthRegisterSection from "./sections/AuthRegisterSection";
@@ -20,7 +18,7 @@ const AuthPage = ({ page }) => {
   const queryClient = useQueryClient();
 
   const [data, setData] = useState();
-  const [authPage, setAuthPage] = useState(page);
+  const [authPage, setAuthPage] = useState(page || "signin");
 
   useEffect(() => {
     const checkUser = async () => {
