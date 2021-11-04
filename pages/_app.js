@@ -14,6 +14,7 @@ import Toasts from "components/base/Toasts";
 import useUser from "context/queries/useUser";
 import NotAuthorized from "pages/NotAuthorized";
 import Modal from "components/base/Modal";
+import AuthPage from "pages/auth/AuthPage";
 
 function Realium({ Component, pageProps }) {
   const [queryClient] = useState(
@@ -45,11 +46,7 @@ function Realium({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <AppProvider>
-            {Component.restricted ? (
-              <Auth>{getLayout(Component, pageProps)}</Auth>
-            ) : (
-              getLayout(Component, pageProps)
-            )}
+            <Auth>{getLayout(Component, pageProps)}</Auth>
             <Toasts />
             <Modal />
           </AppProvider>
@@ -82,13 +79,8 @@ const getLayout = (Component, pageProps) => {
 const Auth = ({ children }) => {
   const { data: user, isLoading } = useUser();
   if (isLoading) return null;
-  if (!user)
-    return (
-      <DefaultLayout>
-        <NotAuthorized />
-      </DefaultLayout>
-    );
-  if (user) return <>{children}</>;
+  if (!user) return <AuthPage />;
+  if (user) return getLayout(children);
 };
 
 export default Realium;
