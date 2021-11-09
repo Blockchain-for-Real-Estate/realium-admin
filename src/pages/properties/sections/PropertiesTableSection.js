@@ -1,89 +1,21 @@
-import { useTable } from "react-table";
-import { useMemo } from "react";
 import useProperties from "context/queries/useProperties";
 
 const PropertiesTableSection = () => {
   const { data: properties, isLoading } = useProperties();
 
-  const data = useMemo(
-    () => [
-      {
-        col1: "Hello",
-        col2: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "rocks",
-      },
-      {
-        col1: "whatever",
-        col2: "you want",
-      },
-    ],
-    []
-  );
-
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Column 1",
-        accessor: "col1", // accessor is the "key" in the data
-      },
-      {
-        Header: "Column 2",
-        accessor: "col2",
-      },
-    ],
-    []
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
-
   return (
-    <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+    <table className="w-full">
       <thead>
-        {headerGroups.map((headerGroup, index) => (
-          <tr key={index} {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column, index2) => (
-              <th
-                key={index2}
-                {...column.getHeaderProps()}
-                style={{
-                  borderBottom: "solid 3px red",
-                  background: "aliceblue",
-                  color: "black",
-                  fontWeight: "bold",
-                }}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
+        <tr>
+          <td>Hello</td>
+          <td>Hello</td>
+          <td>Hello</td>
+          <td>Hello</td>
+        </tr>
       </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, index3) => {
-          prepareRow(row);
-          return (
-            <tr key={index3} {...row.getRowProps()}>
-              {row.cells.map((cell, index4) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    key={index4}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                      background: "papayawhip",
-                    }}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
-            </tr>
-          );
+      <tbody>
+        {properties.map((property) => {
+          return <></>;
         })}
       </tbody>
     </table>
