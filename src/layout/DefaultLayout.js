@@ -4,7 +4,10 @@ import MobileSidebar from "./sidebar/MobileSidebar";
 import DesktopSidebar from "./sidebar/DesktopSidebar";
 import MobileHeader from "./header/MobileHeader";
 
-const navigation = [{ name: "Properties", href: "/", icon: HomeIcon }];
+const navigation = [
+  { name: "Dashboard", href: "/", icon: HomeIcon },
+  { name: "Properties", href: "/properties", icon: HomeIcon },
+];
 
 export default function Example({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);

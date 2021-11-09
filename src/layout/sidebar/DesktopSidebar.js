@@ -30,6 +30,7 @@ const DesktopSidebar = ({ navigation }) => {
                 href={item.href}
                 classes="w-full text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                 activeClasses="bg-gray-100 text-gray-900"
+                exact
               >
                 <item.icon
                   className={classNames(
