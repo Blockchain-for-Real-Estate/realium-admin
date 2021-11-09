@@ -1,8 +1,13 @@
-import useProperties from "context/queries/useProperties";
+import PropertiesCreateSection from "./sections/PropertiesCreateSection";
+import PropertiesTableSection from "./sections/PropertiesTableSection";
 
 const PropertiesPage = () => {
-  const { data: properties } = useProperties();
-  return <div>PropertiesPage</div>;
+  return (
+    <div className="p-5">
+      {/* <PropertiesTableSection /> */}
+      <PropertiesCreateSection />
+    </div>
+  );
 };
 
 export default PropertiesPage;

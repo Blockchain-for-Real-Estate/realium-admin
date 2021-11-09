@@ -1,11 +1,14 @@
 import Image from "next/image";
 import NavLink from "components/base/NavLink";
+import useSignoutMutation from "context/mutations/useSignoutMutation";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const DesktopSidebar = ({ navigation }) => {
+  const { mutate: signOut } = useSignoutMutation();
+
   return (
     <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
       {/* Sidebar component, swap this element with another sidebar if you like */}
@@ -43,7 +46,9 @@ const DesktopSidebar = ({ navigation }) => {
           </nav>
         </div>
         <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-          <button className="btn-primary w-full p-2">Sign Out</button>
+          <button onClick={signOut} className="btn-primary w-full p-2">
+            Sign Out
+          </button>
         </div>
       </div>
     </div>

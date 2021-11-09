@@ -5,7 +5,7 @@
       "type": "pwa-chrome",
       "request": "launch",
       "name": "Debug React",
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3001",
       "webRoot": "${workspaceFolder}"
     },
     {

@@ -49,7 +49,7 @@ function Realium({ Component, pageProps }) {
             <Modal />
           </AppProvider>
         </Hydrate>
-        <ReactQueryDevtools />
+        <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
     </>
   );
