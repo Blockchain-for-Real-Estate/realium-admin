@@ -14,8 +14,8 @@ const PropertiesTableSection = () => {
         </tr>
       </thead>
       <tbody>
-        {properties.map((property) => {
-          return <></>;
+        {properties?.map((property) => {
+          return <>Row</>;
         })}
       </tbody>
     </table>
