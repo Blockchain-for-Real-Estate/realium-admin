@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import "../index.css";
-import Amplify from "../amplify";
+import AmplifyInit from "../amplify";
 
 // CONTEXT
 import { AppProvider } from "context/AppContext";
@@ -27,7 +27,7 @@ function Realium({ Component, pageProps }) {
       })
   );
 
-  Amplify();
+  AmplifyInit();
 
   return (
     <>

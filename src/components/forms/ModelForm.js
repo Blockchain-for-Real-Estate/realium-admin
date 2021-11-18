@@ -5,14 +5,18 @@ import SelectInput from "./inputs/SelectInput";
 import TextAreaInput from "./inputs/TextAreaInput";
 import NumberInput from "./inputs/NumberInput";
 
-const ModelCreateForm = ({ model, submit, isSubmitting }) => {
-  const [state, setState] = useState({});
-  const { data: fields, isLoading } = useModel("property");
+const ModelForm = ({ model, data, submit, isSubmitting }) => {
+  const [state, setState] = useState(data || {});
+  const { data: fields, isLoading } = useModel(model);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     submit(state);
   };
+
+  useEffect(() => {
+    if (data) setState(data);
+  }, [data]);
 
   const GetInput = (attr, options) => {
     switch (options.inputType) {
@@ -67,7 +71,6 @@ const ModelCreateForm = ({ model, submit, isSubmitting }) => {
       className="border-b border-gray-200 bg-white rounded-lg shadow"
       onSubmit={handleSubmit}
     >
-      <div>Create Property</div>
       <div className=" p-4">
         <div className="grid">
           {fields?.map((field) => {
@@ -102,4 +105,4 @@ const ModelCreateForm = ({ model, submit, isSubmitting }) => {
   );
 };
 
-export default ModelCreateForm;
+export default ModelForm;

@@ -8,7 +8,7 @@ const CreateProperty = async (data) => {
   return response.data;
 };
 
-const useCreatePropertyMutation = () => {
+const useCreateProperty = () => {
   const { toast } = useUI();
 
   return useMutation(CreateProperty, {
@@ -21,4 +21,4 @@ const useCreatePropertyMutation = () => {
   });
 };
 
-export default useCreatePropertyMutation;
+export default useCreateProperty;

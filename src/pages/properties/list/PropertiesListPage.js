@@ -1,7 +1,7 @@
 import PropertiesTableSection from "./sections/PropertiesTableSection";
 import Link from "next/link";
 
-const PropertiesPage = () => {
+const PropertiesListPage = () => {
   return (
     <div className="p-5">
       <div>
@@ -14,4 +14,4 @@ const PropertiesPage = () => {
   );
 };
 
-export default PropertiesPage;
+export default PropertiesListPage;

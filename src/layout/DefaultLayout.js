@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { HomeIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { ChartBarIcon, HomeIcon } from "@heroicons/react/outline";
 import MobileSidebar from "./sidebar/MobileSidebar";
 import DesktopSidebar from "./sidebar/DesktopSidebar";
 import MobileHeader from "./header/MobileHeader";
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: HomeIcon },
+  { name: "Dashboard", href: "/", icon: ChartBarIcon },
   { name: "Properties", href: "/properties", icon: HomeIcon },
 ];
 

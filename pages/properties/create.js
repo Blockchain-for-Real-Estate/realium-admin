@@ -1,4 +1,4 @@
-import PropertiesFormPage from "pages/properties/PropertiesFormPage";
+import PropertiesFormPage from "pages/properties/form/PropertiesFormPage";
 
 const Page = () => <PropertiesFormPage />;
 Page.title = "Properties | Realium Admin";

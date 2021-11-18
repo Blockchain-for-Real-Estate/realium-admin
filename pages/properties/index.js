@@ -1,6 +1,6 @@
-import PropertiesPage from "pages/properties/PropertiesPage";
+import PropertiesListPage from "pages/properties/list/PropertiesListPage";
 
-const Page = () => <PropertiesPage />;
+const Page = () => <PropertiesListPage />;
 Page.title = "Properties | Realium Admin";
 Page.description = "Realium CMS Admin";
 Page.layout = "default";
